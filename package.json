@@ -1,0 +1,23 @@
+{
+  "name": "bilmor",
+  "version": "1.0.0",
+  "description": "bilmor frontend",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bilmor-bot/frontend"
+  },
+  "keywords": [
+    "-"
+  ],
+  "author": "Alina Dobroskok <aedobroskok@gmail.com>",
+  "contributors": [
+    "Roman Vorontsov <cflatminor92@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Bilmor-bot/frontend#readme"
+}
