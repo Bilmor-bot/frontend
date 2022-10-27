@@ -19,5 +19,8 @@
     "Roman Vorontsov <cflatminor92@gmail.com>"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/Bilmor-bot/frontend#readme"
+  "homepage": "https://github.com/Bilmor-bot/frontend#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
