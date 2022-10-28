@@ -14,6 +14,9 @@
   "keywords": [
     "-"
   ],
+  "engines": {
+    "node": "16.x"
+  },
   "author": "Alina Dobroskok <aedobroskok@gmail.com>",
   "contributors": [
     "Roman Vorontsov <cflatminor92@gmail.com>"
