@@ -9,11 +9,6 @@ const app = express();
 const port = process.env.PORT || 8000;
 const isProduction = process.env.NODE_ENV === 'production';
 
-const config = require("./webpack.config");
-const webpack = require("webpack");
-const webpackDevMiddleware = require("webpack-dev-middleware");
-const compiler = webpack(config);
-
 app.set('view engine', 'njk');
 
 app.use(express.static(path.join(__dirname + '')));
@@ -42,6 +37,11 @@ app.get("*", (req, res) => {
 
 app.listen(port, () => {
     if (!isProduction) {
+        const config = require("./webpack.config");
+        const webpack = require("webpack");
+        const webpackDevMiddleware = require("webpack-dev-middleware");
+        const compiler = webpack(config);
+
         app.use(
             webpackDevMiddleware(compiler, {
                 writeToDisk: true
