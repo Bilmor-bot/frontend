@@ -1,21 +1,7 @@
-{% extends 'pages/base.njk' %}
+{% extends 'pages/Skills/layout.njk' %}
 
-{% block stylesheets %}
-    {{ super() }}
+{% set title = "Стихийные" %}
 
-    {#    <link rel="stylesheet" href="build/MagicPage/main.css">#}
-{% endblock %}
-
-{% block title %}
-    <title>Билмор (навыки)</title>
-{% endblock %}
-
-{% block header %}{% endblock %}
-
-{% block body %}
+{% block page %}
     {% include "./body.njk" %}
-{% endblock %}
-
-{% block application %}
-    {#    <script src="build/MagicPage/index.js"></script>#}
 {% endblock %}
