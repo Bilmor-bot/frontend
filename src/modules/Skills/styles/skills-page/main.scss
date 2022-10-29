@@ -1,9 +1,13 @@
 @import "styles/variables/main";
 
-.skills-page {
-  .skills-page__header {
+.skill-page {
+  .skill-page__header {
     height: 60px;
     background: $colorLightGray;
     box-shadow: 0 4px 20px rgb(57 69 86 / 10%);
+  }
+
+  .skill-page__to-return {
+    font-size: 40px;
   }
 }
