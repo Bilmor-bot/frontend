@@ -11,7 +11,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const config = require("./webpack.config");
 const webpack = require("webpack");
-const middleware = require("webpack-dev-middleware");
+const webpackDevMiddleware = require("webpack-dev-middleware");
 const compiler = webpack(config);
 
 app.set('view engine', 'njk');
@@ -19,12 +19,6 @@ app.set('view engine', 'njk');
 app.use(express.static(path.join(__dirname + '')));
 // app.use(express.urlencoded({ extended: false }));
 // app.use(express.json());
-
-app.use(
-    middleware(compiler, {
-        writeToDisk: true
-    })
-);
 
 nunjucks.configure(path.join(__dirname + '/'), {
     watch: true,
@@ -47,5 +41,13 @@ app.get("*", (req, res) => {
 })
 
 app.listen(port, () => {
+    if (!isProduction) {
+        app.use(
+            webpackDevMiddleware(compiler, {
+                writeToDisk: true
+            })
+        );
+    }
+
     console.log("we are on " + port);
 });
