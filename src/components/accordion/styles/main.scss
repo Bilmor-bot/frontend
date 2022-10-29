@@ -1,0 +1,31 @@
+@import "styles/variables/main";
+
+.accordion {
+  .accordion__item {
+    & + .accordion__item {
+      border-top: 1px solid $colorLightGray;
+    }
+
+    &.active {
+      .item__body {
+        height: auto;
+        opacity: 1;
+        max-height: 400px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .item__header {
+    font-weight: 700;
+    padding: 20px 0;
+    cursor: pointer;
+  }
+
+  .item__body {
+    height: 0;
+    opacity: 0;
+    max-height: 0;
+    transition: ease max-height .45s;
+  }
+}

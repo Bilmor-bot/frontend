@@ -1,8 +1,19 @@
 @import "variables/main";
+@import "mixins/main";
 
 @import "reset";
 
+html,
 body {
   font-size: $baseFontSize;
+  font-family: "Arial", sans-serif;
   background: lightsteelblue;
+  @include fontSmoothing();
+}
+
+.container {
+  max-width: calc(#{$containerWidth} + #{$containerPadding * 2});
+  width: 100%;
+  padding: 0 $containerPadding;
+  margin: 0 auto;
 }
