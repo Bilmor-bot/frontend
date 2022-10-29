@@ -4,7 +4,10 @@
   "description": "bilmor frontend",
   "main": "server.js",
   "scripts": {
+    "test": "webpack-dev-server",
     "dev": "nodemon server.js -e njk,js",
+    "watch": "webpack --watch",
+    "build": "webpack",
     "start": "node server.js"
   },
   "repository": {
@@ -28,6 +31,13 @@
     "nunjucks": "^3.2.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "css-loader": "^6.7.1",
+    "mini-css-extract-plugin": "^2.6.1",
+    "nodemon": "^2.0.20",
+    "postcss-loader": "^7.0.1",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }

@@ -1,3 +1,3 @@
 import "./styles/index.scss";
 
-console.log('home page');
+console.log('magic page');

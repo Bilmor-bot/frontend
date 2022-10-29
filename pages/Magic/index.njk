@@ -3,7 +3,7 @@
 {% block stylesheets %}
     {{ super() }}
 
-{#    <link rel="stylesheet" href="build/Magic/main.css">#}
+    <link rel="stylesheet" href="build/MagicPage/main.css">
 {% endblock %}
 
 {% block title %}
@@ -14,4 +14,6 @@
     {% include "./body.njk" %}
 {% endblock %}
 
-{% block application %}{% endblock %}
+{% block application %}
+    <script src="build/MagicPage/index.js"></script>
+{% endblock %}
