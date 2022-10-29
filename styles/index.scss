@@ -17,3 +17,9 @@ body {
   padding: 0 $containerPadding;
   margin: 0 auto;
 }
+
+.flex-container {
+  @extend .container;
+  display: flex;
+}
+
