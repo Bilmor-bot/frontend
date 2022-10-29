@@ -4,7 +4,7 @@
   "description": "bilmor frontend",
   "main": "server.js",
   "scripts": {
-    "test": "test",
+    "dev": "nodemon server.js -e njk,js",
     "start": "node server.js"
   },
   "repository": {
@@ -22,8 +22,12 @@
     "Roman Vorontsov <cflatminor92@gmail.com>"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/Bilmor-bot/frontend#readme",
+  "homepage": "https://bilmor.online",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "nunjucks": "^3.2.3"
   }
 }
