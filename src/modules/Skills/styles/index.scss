@@ -30,8 +30,8 @@
     position: relative;
     width: 320px;
     height: 300px;
-    color: aliceblue;
-    background: #000;
+    color: $colorAliceBlue;
+    background: $colorBlack;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,7 +103,7 @@
   .box .content h2 {
     font-size: 32px;
     margin-bottom: 45px;
-    color: #fff;
+    color: $colorWhite;
     text-align: center;
   }
 
