@@ -38,6 +38,10 @@ app.get("/skills/general", (req, res) => {
     res.render("pages/Skills/General/index.njk");
 });
 
+app.get("/skills/deseases", (req, res) => {
+    res.render("pages/Skills/Deseases/index.njk");
+});
+
 app.get("*", (req, res) => {
     // res.status(404).redirect("/magic");
     res.status(404).render("pages/404/index.njk");
