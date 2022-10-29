@@ -26,6 +26,11 @@
     padding: 10px;
   }
 
+  .content a:hover {
+    color: $colorWhite;
+    background: $colorBlack;
+  }
+
   .preview {
     max-width: 400px;
   }
