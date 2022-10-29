@@ -1,0 +1,23 @@
+{% extends 'pages/base.njk' %}
+
+{% block stylesheets %}
+    {{ super() }}
+
+    <link rel="stylesheet" href="/build/SkillsPage/main.css">
+{% endblock %}
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+
+{% block body %}
+    <div class="skills-page">
+        {% include "pages/Skills/components/header/main.njk" %}
+
+        {% block page %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block application %}
+    {#    <script src="build/MagicPage/index.js"></script>#}
+{% endblock %}

@@ -30,8 +30,8 @@ app.get("/skills", (req, res) => {
     res.render("pages/Skills/index.njk");
 });
 
-app.get("/skills/elements", (req, res) => {
-    res.render("pages/Skills/Elements/index.njk");
+app.get("/skills/elemental", (req, res) => {
+    res.render("pages/Skills/Elemental/index.njk");
 });
 
 app.get("/skills/general", (req, res) => {
