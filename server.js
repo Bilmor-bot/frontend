@@ -12,6 +12,10 @@ app.get("/", (req, res) => {
     res.send("hello\n");
 });
 
+app.get("https://bilmor-frontend.herokuapp.com/", (req, res) => {
+    res.redirect("/");
+})
+
 app.listen(port, () => {
     console.log('we are on ' + port);
 });
