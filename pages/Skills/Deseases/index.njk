@@ -1,0 +1,21 @@
+{% extends 'pages/base.njk' %}
+
+{% block stylesheets %}
+    {{ super() }}
+
+    {#    <link rel="stylesheet" href="build/MagicPage/main.css">#}
+{% endblock %}
+
+{% block title %}
+    <title>Билмор (навыки)</title>
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+    {% include "./body.njk" %}
+{% endblock %}
+
+{% block application %}
+    {#    <script src="build/MagicPage/index.js"></script>#}
+{% endblock %}
