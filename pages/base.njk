@@ -12,7 +12,7 @@
     {% endblock %}
 
     {% block stylesheets %}
-{#        <link rel="stylesheet" href="build/App/main.css">#}
+        <link rel="stylesheet" href="build/App/main.css">
     {% endblock %}
 
     {% block title %}
@@ -23,7 +23,7 @@
 <body>
     <div id="app">
         {% block header %}
-            {% include 'src/components/header/main.njk' %}
+            {% include "src/components/header/main.njk" %}
         {% endblock %}
 
         {% block body %}{% endblock %}

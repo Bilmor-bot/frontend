@@ -1,3 +1,8 @@
+@import "variables/main";
+
+@import "reset";
+
 body {
+  font-size: $baseFontSize;
   background: lightsteelblue;
 }

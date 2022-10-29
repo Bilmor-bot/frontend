@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     mode: process.env.NODE_ENV || 'production',
     entry: {
+        App: './styles/index.scss',
         HomePage: './src/modules/HomePage/index.js',
         MagicPage: './src/modules/Magic/index.js',
     },
@@ -24,6 +25,12 @@ module.exports = {
                 ],
             },
         ],
+    },
+    resolve: {
+        alias: {
+            styles: path.resolve(__dirname, 'styles/'),
+            components: path.resolve(__dirname, 'src/components/'),
+        },
     },
     plugins: [
         new MiniCssExtractPlugin({
