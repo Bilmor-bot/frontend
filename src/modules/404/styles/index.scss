@@ -4,6 +4,10 @@
   background: $colorLightGray;
   padding: 200px;
 
+  .content {
+    margin-right: 75px;
+  }
+
   .content h1 {
     font-size: 36px;
     text-align: center;
@@ -22,7 +26,7 @@
     font-weight: 400;
     color: $colorBlack;
     background: $colorWhite;
-    border-radius: 20%;
+    border-radius: 10px;
     margin: 15px 0;
     padding: 10px;
   }
