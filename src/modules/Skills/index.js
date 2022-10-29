@@ -4,7 +4,7 @@ import Accordion from "components/accordion/main";
 
 import "./styles/index.scss";
 
-class MagicPage {
+class SkillsPage {
     constructor(dependencies) {
         this.Repository = dependencies.Repository;
     }
@@ -62,7 +62,7 @@ class MagicPage {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    new MagicPage({
+    new SkillsPage({
         Repository: new Repository()
     }).init();
 });

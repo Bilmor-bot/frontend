@@ -1,0 +1,21 @@
+{% extends 'pages/base.njk' %}
+
+{% block stylesheets %}
+    {{ super() }}
+
+    <link rel="stylesheet" href="build/SkillsPage/main.css">
+{% endblock %}
+
+{% block title %}
+    <title>Билмор (навыки)</title>
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+    {% include "./body.njk" %}
+{% endblock %}
+
+{% block application %}
+    <script src="build/SkillsPage/index.js"></script>
+{% endblock %}

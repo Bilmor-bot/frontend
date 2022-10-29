@@ -6,7 +6,7 @@ module.exports = {
     entry: {
         App: './styles/index.scss',
         HomePage: './src/modules/HomePage/index.js',
-        MagicPage: './src/modules/Magic/index.js',
+        SkillsPage: './src/modules/Skills/index.js',
     },
     output: {
         clean: true,

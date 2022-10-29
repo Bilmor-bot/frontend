@@ -23,11 +23,19 @@ nunjucks.configure(path.join(__dirname + '/'), {
 });
 
 app.get("/", (req, res) => {
-    res.render("pages/Magic/index.njk");
+    res.render("pages/Skills/index.njk");
 });
 
-app.get("/magic", (req, res) => {
-    res.render("pages/Magic/index.njk");
+app.get("/skills", (req, res) => {
+    res.render("pages/Skills/index.njk");
+});
+
+app.get("/skills/elements", (req, res) => {
+    res.render("pages/Skills/Elements/index.njk");
+});
+
+app.get("/skills/general", (req, res) => {
+    res.render("pages/Skills/General/index.njk");
 });
 
 app.get("*", (req, res) => {
