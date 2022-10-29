@@ -6,7 +6,7 @@
 html,
 body {
   font-size: $baseFontSize;
-  font-family: "Arial", sans-serif;
+  font-family: $baseFontFamily;
   background: lightsteelblue;
   @include fontSmoothing();
 }
