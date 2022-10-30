@@ -12,14 +12,30 @@ class SkillsPage {
 
     /**
      * @private
-     * @method _getAccordionItems
+     * @method _getDevelopingItems
      * @param resultContainer {Object}
      * @returns {Promise}
      */
-    _getAccordionItems(resultContainer) {
+    _getDevelopingItems(resultContainer) {
         return new Promise((resolve) => {
-            this.Repository.getAccordionItems((items) => {
-                resultContainer.accordionItems = items;
+            this.Repository.getDevelopingItems((items) => {
+                resultContainer.developingItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getUndevelopingItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getUndevelopingItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getUndevelopingItems((items) => {
+                resultContainer.undevelopingItems = items;
             });
 
             resolve();
@@ -33,12 +49,14 @@ class SkillsPage {
      */
     _getInitialData() {
         let initialData = {
-            accordionItems: []
+            developingItems: [],
+            undevelopingItems: []
         };
 
         return new Promise((resolve) => {
             Promise.all([
-                this._getAccordionItems(initialData)
+                this._getDevelopingItems(initialData),
+                this._getUndevelopingItems(initialData),
             ]).then(resolve);
         })
             .then(() => initialData)
@@ -55,8 +73,13 @@ class SkillsPage {
             ._getInitialData()
             .then((initialData) => {
                 new Accordion(
-                    document.querySelector(".accordion"),
-                    initialData.accordionItems // todo entity
+                    document.querySelector(".developing__accordion"),
+                    initialData.developingItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".undeveloping__accordion"),
+                    initialData.undevelopingItems // todo entity
                 ).init();
 
                 new Tabs().init(
