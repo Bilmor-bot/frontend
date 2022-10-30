@@ -49,10 +49,14 @@ app.get("*", (req, res) => {
 
 app.listen(port, () => {
     if (!isProduction) {
-        const config = require("./webpack.config");
+        const defaultWebpackConfig = require("./webpack.config");
+        const overrideWebpackConfig = {
+            mode: "development"
+        };
+        const webpackConfig = Object.assign(defaultWebpackConfig, overrideWebpackConfig);
         const webpack = require("webpack");
         const webpackDevMiddleware = require("webpack-dev-middleware");
-        const compiler = webpack(config);
+        const compiler = webpack(webpackConfig);
 
         app.use(
             webpackDevMiddleware(compiler, {
