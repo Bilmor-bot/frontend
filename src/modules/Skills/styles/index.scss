@@ -1,8 +1,9 @@
 @import "styles/variables/main";
 
 @import "components/accordion/styles/main";
+@import "components/tabs/styles/main";
 
-@import "./skills-page/main";
+@import "./skill-page/main";
 
 .skills-page {
   color: $colorBlack;
