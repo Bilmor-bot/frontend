@@ -1,6 +1,6 @@
 /**
  * @example
- *      <div class="tabs">
+ *      <div class="tabs whatever-class__tabs">
  *         <div class="tabs__header">
  *             <div class="tabs__items">
  *                 <div class="tabs__item active" data-id="title1">
@@ -30,12 +30,14 @@
 class Tabs {
     constructor(htmlElement) {
         this.root = htmlElement;
-        this.tabsButtons = htmlElement.querySelectorAll(".tabs__item");
-        this.tabsContents = htmlElement.querySelectorAll(".tabs__content");
+        this.tabsButtons = Array.from(this.root.querySelectorAll(".tabs__item") || []);
+        this.tabsContents = Array.from(this.root.querySelectorAll(".tabs__content") || []);
 
         this.classNames = {
             active: "active"
         };
+
+        this._disableActiveTab = this._disableActiveTab.bind(this);
     }
 
     /**
@@ -55,7 +57,7 @@ class Tabs {
      * @returns {HTMLElement}
      */
     _getActiveTab() {
-        return this.tabsButtons.find((item) => item.classList.includes(this.classNames.active));
+        return this.tabsButtons.find((item) => item.classList.contains(this.classNames.active));
     }
 
     /**
@@ -78,6 +80,18 @@ class Tabs {
      */
     _setActiveContent(content) {
         content.style.display = "block";
+
+        return this;
+    }
+
+    /**
+     * @private
+     * @method _disableActiveTab
+     * @param tab {HTMLElement}
+     * @returns {Tabs}
+     */
+    _disableActiveTab(tab) {
+        tab.classList.remove(this.classNames.active);
 
         return this;
     }
@@ -107,13 +121,30 @@ class Tabs {
 
     /**
      * @private
+     * @method _removeAllActiveTabs
+     * @returns {Tabs}
+     */
+    _removeAllActiveTabs() {
+        this.tabsButtons.forEach(this._disableActiveTab);
+
+        return this;
+    }
+
+    /**
+     * @private
      * @method _addEventListeners
      * @returns {Tabs}
      */
     _addEventListeners() {
         this.tabsButtons.forEach((item) => {
             item.addEventListener("click", (e) => {
-                console.log(e.target.closest(".tabs__item"));
+                let currentItem = e.target.closest(".tabs__item");
+
+                this
+                    ._removeAllActiveTabs()
+                    ._hideAllContents()
+                    ._setActiveTab(currentItem)
+                    ._setActiveContent(this._getActiveContent());
             });
         });
 

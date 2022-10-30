@@ -5,6 +5,7 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const nunjucks = require("nunjucks");
+const {Obj} = require("nunjucks/src/object");
 const app = express();
 const port = process.env.PORT || 8000;
 const isProduction = process.env.NODE_ENV === 'production';
@@ -49,10 +50,14 @@ app.get("*", (req, res) => {
 
 app.listen(port, () => {
     if (!isProduction) {
-        const config = require("./webpack.config");
+        const defaultWebpackConfig = require("./webpack.config");
+        const overrideWebpackConfig = {
+            mode: "development"
+        };
+        const webpackConfig = Object.assign(defaultWebpackConfig, overrideWebpackConfig);
         const webpack = require("webpack");
         const webpackDevMiddleware = require("webpack-dev-middleware");
-        const compiler = webpack(config);
+        const compiler = webpack(webpackConfig);
 
         app.use(
             webpackDevMiddleware(compiler, {

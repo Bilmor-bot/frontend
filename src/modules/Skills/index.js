@@ -82,9 +82,9 @@ class SkillsPage {
                     initialData.undevelopingItems // todo entity
                 ).init();
 
-                new Tabs().init(
+                new Tabs(
                     document.querySelector(".tabs")
-                );
+                ).init();
             });
     }
 }
