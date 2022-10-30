@@ -1,0 +1,65 @@
+.deseases-abilities {
+  margin-top: 25px;
+
+  .skills-deseases {
+    border: 1px solid white;
+    width: 360px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .for-faculty {
+    font-size: 32px;
+    color: $colorWhite;
+    text-align: center;
+    margin: 25px;
+  };
+
+  .acqua {
+    text-shadow:
+            0 0 0 #fff,
+            0 0 0 #fff,
+            0 0 0 #fff,
+            0 0 2px #0142c0,
+            0 0 20px #fff,
+            0 0 30px #fff,
+            0 0 55px #0142c0,
+            0 0 80px #0142c0;
+  };
+
+  .fuoco {
+    text-shadow:
+            0 0 0 #fff,
+            0 0 0 #fff,
+            0 0 0 #fff,
+            0 0 2px #b90000,
+            0 0 20px #fff,
+            0 0 30px #fff,
+            0 0 55px #b90000,
+            0 0 80px #b90000;
+    };
+
+  .aria {
+    text-shadow:
+            0 0 0 #fff,
+            0 0 0 #fff,
+            0 0 0 #fff,
+            0 0 2px #6a55bd,
+            0 0 20px #fff,
+            0 0 30px #fff,
+            0 0 55px #6a55bd,
+            0 0 80px #6a55bd;
+  };
+
+  .content-title {
+    color: $colorWhite;
+    font-size: 22px;
+  }
+
+  .content-body {
+    color: $colorWhite;
+    font-size: 17px;
+    margin-top: 10px;
+    padding: 16px 20px 32px 10px;
+  }
+}

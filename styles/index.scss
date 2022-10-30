@@ -7,7 +7,7 @@ html,
 body {
   font-size: $baseFontSize;
   font-family: $baseFontFamily;
-  background: lightsteelblue;
+  background: $colorBlack;
   @include fontSmoothing();
 }
 
