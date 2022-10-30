@@ -5,7 +5,6 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const nunjucks = require("nunjucks");
-const {Obj} = require("nunjucks/src/object");
 const app = express();
 const port = process.env.PORT || 8000;
 const isProduction = process.env.NODE_ENV === 'production';
