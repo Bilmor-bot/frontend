@@ -1,6 +1,7 @@
 import Repository from "./repository/Repository";
 
 import Accordion from "components/accordion/main";
+import Tabs from "components/tabs/main";
 
 import "./styles/index.scss";
 
@@ -79,6 +80,10 @@ class SkillsPage {
                 new Accordion(
                     document.querySelector(".undeveloping__accordion"),
                     initialData.undevelopingItems // todo entity
+                ).init();
+
+                new Tabs(
+                    document.querySelector(".tabs")
                 ).init();
             });
     }

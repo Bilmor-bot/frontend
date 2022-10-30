@@ -8,6 +8,7 @@
 
     &.active {
       .item__body {
+        overflow: visible;
         height: auto;
         opacity: 1;
         max-height: 400px;
@@ -23,9 +24,10 @@
   }
 
   .item__body {
+    overflow: hidden;
     height: 0;
     opacity: 0;
     max-height: 0;
-    transition: ease max-height .45s;
+    transition: ease max-height .25s, ease opacity .5s;
   }
 }
