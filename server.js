@@ -11,6 +11,13 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 app.set('view engine', 'njk');
 
+app.use((req, res, next) => {
+    res.locals.buildImageUrl = function (path) {
+        return `https://res.cloudinary.com/hzqoxcal2/image/upload/v1667252707/${path}`;
+    }
+
+    next();
+});
 app.use(express.static(path.join(__dirname + '')));
 // app.use(express.urlencoded({ extended: false }));
 // app.use(express.json());
@@ -40,6 +47,10 @@ app.get("/skills/general", (req, res) => {
 
 app.get("/skills/deseases", (req, res) => {
     res.render("pages/Skills/Deseases/index.njk");
+});
+
+app.get("/admin", (req, res) => {
+    res.render("pages/Admin/index.njk");
 });
 
 app.get("*", (req, res) => {
