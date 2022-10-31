@@ -30,8 +30,8 @@
 class Tabs {
     constructor(htmlElement) {
         this.root = htmlElement;
-        this.tabsButtons = Array.from(this.root.querySelectorAll(".tabs__item") || []);
-        this.tabsContents = Array.from(this.root.querySelectorAll(".tabs__content") || []);
+        this.tabsButtons = Array.from(this.root?.querySelectorAll(".tabs__item") || []);
+        this.tabsContents = Array.from(this.root?.querySelectorAll(".tabs__content") || []);
 
         this.classNames = {
             active: "active"

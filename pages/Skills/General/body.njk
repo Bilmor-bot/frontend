@@ -1,19 +1,26 @@
 <div class="general-abilities">
-    <div class="container">
-        <div class="skill-category developing">
-            <div class="skill-category__title">
-                Развивающиеся
+    <div class="flex-container ai-start">
+        <aside class="skill-page__aside">
+            <a href="#" data-id="basic">РАЗВИВАЮЩИЕСЯ</a>
+            <a href="#" data-id="not-basic">НЕРАЗВИВАЮЩИЕСЯ</a>
+        </aside>
+
+        <div class="skill-list">
+            <div id="basic" class="skill-category">
+                <div class="skill-category__title">
+                    Развивающиеся
+                </div>
+
+                <div class="accordion developing__accordion"></div>
             </div>
 
-            <div class="accordion developing__accordion"></div>
-        </div>
+            <div id="not-basic" class="skill-category">
+                <div class="skill-category__title">
+                    Неразвивающиеся
+                </div>
 
-        <div class="skill-category undeveloping">
-            <div class="skill-category__title">
-                Неразвивающиеся
+                <div class="accordion undeveloping__accordion"></div>
             </div>
-
-            <div class="accordion undeveloping__accordion"></div>
         </div>
     </div>
 </div>
