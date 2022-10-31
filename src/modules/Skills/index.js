@@ -28,6 +28,54 @@ class SkillsPage {
 
     /**
      * @private
+     * @method _getAriaBasicItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getAriaBasicItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getAriaBasicItems((items) => {
+                resultContainer.ariaBasicItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getAriaSubstrateItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getAriaSubstrateItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getAriaSubstrateItems((items) => {
+                resultContainer.ariaSubstrateItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getAriaSubstrateItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getAriaUndevelopingItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getAriaUndevelopingItems((items) => {
+                resultContainer.ariaUndevelopingItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
      * @method _getUndevelopingItems
      * @param resultContainer {Object}
      * @returns {Promise}
@@ -50,13 +98,19 @@ class SkillsPage {
     _getInitialData() {
         let initialData = {
             developingItems: [],
-            undevelopingItems: []
+            undevelopingItems: [],
+            ariaBasicItems: [],
+            ariaSubstrateItems: [],
+            ariaUndevelopingItems: []
         };
 
         return new Promise((resolve) => {
             Promise.all([
                 this._getDevelopingItems(initialData),
                 this._getUndevelopingItems(initialData),
+                this._getAriaBasicItems(initialData),
+                this._getAriaSubstrateItems(initialData),
+                this._getAriaUndevelopingItems(initialData)
             ]).then(resolve);
         })
             .then(() => initialData)
@@ -104,6 +158,21 @@ class SkillsPage {
                 new Accordion(
                     document.querySelector(".undeveloping__accordion"),
                     initialData.undevelopingItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".aria-basic__accordion"),
+                    initialData.ariaBasicItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".aria-substrate__accordion"),
+                    initialData.ariaSubstrateItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".aria-undeveloping__accordion"),
+                    initialData.ariaUndevelopingItems // todo entity
                 ).init();
 
                 new Tabs(
