@@ -1,4 +1,19 @@
-$baseFontSize: 16px;
-
-$colorWhite: #FFFFFF;
+$colorWhite: rgb(255, 255, 255);
 $colorBlack: #000000;
+$colorLightGray: lightgray;
+$colorDarkGray: darkgray;
+$colorAliceBlue: aliceblue;
+$colorRed: red;
+$colorYellow: #efef49;
+$colorPurple: purple;
+
+$baseFontSize: 16px;
+$baseFontColor: $colorYellow;
+$baseFontFamily: "Ubuntu", sans-serif;
+
+$containerWidth: 1240px;
+$containerPadding: 12px;
+
+$screenSizeLarge: 1024px;
+$screenSizeMedium: 768px;
+$screenSizeSmall: 540px;

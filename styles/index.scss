@@ -1,8 +1,66 @@
 @import "variables/main";
+@import "mixins/main";
 
 @import "reset";
 
+html,
 body {
   font-size: $baseFontSize;
-  background: lightsteelblue;
+  font-family: $baseFontFamily;
+  background: $colorBlack;
+  color: $baseFontColor;
+  @include fontSmoothing();
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    background: $colorYellow;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $colorBlack;
+  }
+}
+
+#app {
+  height: 100vh;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.container {
+  max-width: calc(#{$containerWidth} + #{$containerPadding * 2});
+  width: 100%;
+  padding: 0 $containerPadding;
+  margin: 0 auto;
+}
+
+.flex-container {
+  @extend .container;
+  display: flex;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.jc-space-between {
+  justify-content: space-between;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.ai-start {
+  align-items: flex-start;
 }

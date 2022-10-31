@@ -4,9 +4,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     mode: process.env.NODE_ENV || 'production',
     entry: {
+        404: './src/modules/404/index.js',
         App: './styles/index.scss',
         HomePage: './src/modules/HomePage/index.js',
-        MagicPage: './src/modules/Magic/index.js',
+        SkillsPage: './src/modules/Skills/index.js',
     },
     output: {
         clean: true,

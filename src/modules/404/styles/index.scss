@@ -1,0 +1,45 @@
+@import "styles/variables/main";
+
+.page-404 {
+  background: $colorBlack;
+  padding: 200px;
+
+  .content {
+    margin-right: 75px;
+  }
+
+  .content h1 {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .content p {
+    font-style: italic;
+    font-size: 24px;
+    margin: 15px 0 60px 0;
+  }
+
+  .content a {
+    text-align: center;
+    display: block;
+    font-size: 22px;
+    font-weight: 400;
+    color: $colorBlack;
+    background: $colorWhite;
+    border-radius: 10px;
+    margin: 15px 0;
+    padding: 10px;
+  }
+
+  .content a:hover {
+    color: $colorWhite;
+    background: $colorBlack;
+  }
+
+  .preview {
+    max-width: 400px;
+    width: 100%;
+  }
+}
+
+

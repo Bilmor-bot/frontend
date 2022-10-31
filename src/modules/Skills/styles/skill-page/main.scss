@@ -1,0 +1,119 @@
+@import "styles/variables/main";
+
+.skill-page {
+  @import "skill-category";
+  @import "deseases/main";
+
+  .skill-page__header {
+    height: 68px;
+    margin-bottom: 24px;
+    background: $colorDarkGray;
+    box-shadow: 0 4px 20px rgb(57 69 86 / 10%);
+
+    .header__title {
+      font-size: $baseFontSize * 1.5;
+      color: $colorBlack;
+    }
+
+    .header__to-menu {
+      display: none;
+    }
+  }
+
+  .skill-page__to-return {
+    font-size: 34px;
+    color: $colorBlack;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      transform: rotate(180deg);
+      fill: #337AB7;
+      margin-right: 12px;
+    }
+
+    span {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+
+  .skill-page__aside {
+    border: 1px solid $colorRed;
+    border-radius: 8px;
+    min-width: 260px;
+    max-width: 260px;
+    margin-right: 32px;
+    position: sticky;
+    top: 16px;
+
+    a {
+      display: block;
+      font-size: $baseFontSize * 1.125;
+      padding: 16px 12px;
+      text-align: center;
+      color: $colorPurple;
+      transition: ease color .12s;
+
+      &:hover {
+        color: $colorRed;
+      }
+    }
+  }
+}
+
+.skill-page {
+  @media screen and (max-width: $screenSizeLarge) {
+    .skill-page__aside {
+      max-width: 200px;
+      min-width: 200px;
+
+      a {
+        font-size: $baseFontSize
+      }
+    }
+  }
+
+  @media screen and (max-width: $screenSizeMedium) {
+    .skill-page__aside {
+      display: none;
+      position: fixed;
+      left: auto;
+      right: 24px;
+      margin: 0;
+      top: 90px;
+      background: $colorBlack;
+      z-index: 100;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    .skill-page__header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+
+      .header__title {
+        margin: 0 auto;
+      }
+
+      .header__to-menu {
+        display: block;
+        width: 28px;
+        height: 28px;
+        background: black;
+      }
+    }
+
+    .skill-page__to-return {
+      font-size: 26px;
+      color: $colorBlack;
+
+      span {
+        font-size: $baseFontSize;
+      }
+    }
+  }
+}

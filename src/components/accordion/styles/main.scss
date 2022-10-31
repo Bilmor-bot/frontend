@@ -1,0 +1,35 @@
+@import "styles/variables/main";
+
+.accordion {
+  .accordion__item {
+    & + .accordion__item {
+      border-top: 1px solid $colorDarkGray;
+    }
+
+    &.active {
+      .item__body {
+        padding-left: 12px;
+        padding-top: 8px;
+        overflow: visible;
+        height: auto;
+        opacity: 1;
+        max-height: 1600px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .item__header {
+    font-weight: 700;
+    padding: 20px 0;
+    cursor: pointer;
+  }
+
+  .item__body {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    max-height: 0;
+    transition: ease max-height .25s, ease opacity .5s;
+  }
+}
