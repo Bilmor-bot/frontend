@@ -64,6 +64,30 @@ class SkillsPage {
     }
 
     /**
+     * @private
+     * @method _iniAside
+     * @returns {void}
+     */
+    _iniAside() {
+        let links = document
+            .querySelector(".skill-page__aside")
+            .querySelectorAll("a");
+
+        links.forEach((item) => {
+            item.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                if (document.getElementById(item.dataset.id)) {
+                    window.scrollTo({
+                        top: document.getElementById(item.dataset.id).offsetTop - 20,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    }
+
+    /**
      * @public
      * @method init
      * @returns {void}
@@ -85,6 +109,8 @@ class SkillsPage {
                 new Tabs(
                     document.querySelector(".tabs")
                 ).init();
+
+                this._iniAside();
             });
     }
 }
