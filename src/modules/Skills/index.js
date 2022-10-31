@@ -119,24 +119,26 @@ class SkillsPage {
 
     /**
      * @private
-     * @method _iniAside
+     * @method _initAside
      * @returns {void}
      */
-    _iniAside() {
-        let links = document
-            .querySelector(".skill-page__aside")
-            .querySelectorAll("a");
+    _initAside() {
+        let asides = document.querySelectorAll(".skill-page__aside");
 
-        links.forEach((item) => {
-            item.addEventListener("click", (event) => {
-                event.preventDefault();
+        asides.forEach((aside) => {
+            let links = aside.querySelectorAll("a");
 
-                if (document.getElementById(item.dataset.id)) {
-                    window.scrollTo({
-                        top: document.getElementById(item.dataset.id).offsetTop - 20,
-                        behavior: "smooth"
-                    });
-                }
+            links.forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    event.preventDefault();
+
+                    if (document.getElementById(link.dataset.id)) {
+                        window.scrollTo({
+                            top: document.getElementById(link.dataset.id).offsetTop - 20,
+                            behavior: "smooth"
+                        });
+                    }
+                });
             });
         });
     }
@@ -179,7 +181,7 @@ class SkillsPage {
                     document.querySelector(".tabs")
                 ).init();
 
-                this._iniAside();
+                this._initAside();
             });
     }
 }
