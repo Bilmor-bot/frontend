@@ -1,6 +1,8 @@
 @import "styles/variables/main";
 
 .skill-page {
+  @import "deseases/main";
+
   .skill-page__header {
     height: 60px;
     background: $colorLightGray;
