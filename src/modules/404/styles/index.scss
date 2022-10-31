@@ -1,7 +1,7 @@
 @import "styles/variables/main";
 
 .page-404 {
-  background: $colorLightGray;
+  background: $colorBlack;
   padding: 200px;
 
   .content {
@@ -38,6 +38,7 @@
 
   .preview {
     max-width: 400px;
+    width: 100%;
   }
 }
 

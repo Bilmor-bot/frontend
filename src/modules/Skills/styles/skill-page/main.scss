@@ -14,6 +14,10 @@
       font-size: $baseFontSize * 1.5;
       color: $colorBlack;
     }
+
+    .header__to-menu {
+      display: none;
+    }
   }
 
   .skill-page__to-return {
@@ -65,11 +69,33 @@
   @media screen and (max-width: $screenSizeMedium) {
     .skill-page__aside {
       display: none;
+      position: fixed;
+      left: auto;
+      right: 24px;
+      margin: 0;
+      top: 90px;
+      background: $colorBlack;
+      z-index: 100;
+
+      &.active {
+        display: block;
+      }
     }
 
     .skill-page__header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+
       .header__title {
         margin: 0 auto;
+      }
+
+      .header__to-menu {
+        display: block;
+        width: 28px;
+        height: 28px;
+        background: black;
       }
     }
 
