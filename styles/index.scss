@@ -8,6 +8,7 @@ body {
   font-size: $baseFontSize;
   font-family: $baseFontFamily;
   background: $colorBlack;
+  color: $baseFontColor;
   @include fontSmoothing();
 }
 
