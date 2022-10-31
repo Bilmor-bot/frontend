@@ -12,13 +12,11 @@
 
   .tabs__items {
     display: flex;
-    border-bottom: 1px solid $colorLightGray;
   }
 
   .tabs__item {
     padding: 16px 32px;
-    border-bottom: 1px solid transparent;
-    margin-bottom: -1px;
+    border-bottom: 1px solid lightgray;
     white-space: nowrap;
     font-weight: 500;
     font-size: $baseFontSize * 1.125;

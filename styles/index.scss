@@ -10,6 +10,15 @@ body {
   background: $colorBlack;
   color: $baseFontColor;
   @include fontSmoothing();
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    background: $colorYellow;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $colorBlack;
+  }
 }
 
 #app {

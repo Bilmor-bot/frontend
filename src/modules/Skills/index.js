@@ -3,6 +3,8 @@ import Repository from "./repository/Repository";
 import Accordion from "components/accordion/main";
 import Tabs from "components/tabs/main";
 
+import Aside from "./aside";
+
 import "./styles/index.scss";
 
 class SkillsPage {
@@ -118,32 +120,6 @@ class SkillsPage {
     }
 
     /**
-     * @private
-     * @method _initAside
-     * @returns {void}
-     */
-    _initAside() {
-        let asides = document.querySelectorAll(".skill-page__aside");
-
-        asides.forEach((aside) => {
-            let links = aside.querySelectorAll("a");
-
-            links.forEach((link) => {
-                link.addEventListener("click", (event) => {
-                    event.preventDefault();
-
-                    if (document.getElementById(link.dataset.id)) {
-                        window.scrollTo({
-                            top: document.getElementById(link.dataset.id).offsetTop - 20,
-                            behavior: "smooth"
-                        });
-                    }
-                });
-            });
-        });
-    }
-
-    /**
      * @public
      * @method init
      * @returns {void}
@@ -181,7 +157,7 @@ class SkillsPage {
                     document.querySelector(".tabs")
                 ).init();
 
-                this._initAside();
+                new Aside().init();
             });
     }
 }
