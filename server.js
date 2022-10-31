@@ -56,7 +56,7 @@ app.get("/admin", (req, res) => {
 app.get("*", (req, res) => {
     // res.status(404).redirect("/magic");
     res.status(404).render("pages/404/index.njk");
-})
+});
 
 app.listen(port, () => {
     if (!isProduction) {

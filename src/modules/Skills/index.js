@@ -62,7 +62,7 @@ class SkillsPage {
 
     /**
      * @private
-     * @method _getAriaSubstrateItems
+     * @method _getAriaUndevelopingItems
      * @param resultContainer {Object}
      * @returns {Promise}
      */
@@ -94,6 +94,102 @@ class SkillsPage {
 
     /**
      * @private
+     * @method _getFuocoBasicItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getFuocoBasicItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getFuocoBasicItems((items) => {
+                resultContainer.fuocoBasicItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getFuocoSubstrateItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getFuocoSubstrateItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getFuocoSubstrateItems((items) => {
+                resultContainer.fuocoSubstrateItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getFuocoUndevelopingItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getFuocoUndevelopingItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getFuocoUndevelopingItems((items) => {
+                resultContainer.fuocoUndevelopingItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getAcquaBasicItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getAcquaBasicItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getAcquaBasicItems((items) => {
+                resultContainer.acquaBasicItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getAcquaSubstrateItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getAcquaSubstrateItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getAcquaSubstrateItems((items) => {
+                resultContainer.acquaSubstrateItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getAcquaUndevelopingItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getAcquaUndevelopingItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getAcquaUndevelopingItems((items) => {
+                resultContainer.acquaUndevelopingItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
      * @method _getInitialData
      * @returns {Promise}
      */
@@ -103,7 +199,13 @@ class SkillsPage {
             undevelopingItems: [],
             ariaBasicItems: [],
             ariaSubstrateItems: [],
-            ariaUndevelopingItems: []
+            ariaUndevelopingItems: [],
+            fuocoBasicItems: [],
+            fuocoSubstrateItems: [],
+            fuocoUndevelopingItems: [],
+            acquaBasicItems: [],
+            acquaSubstrateItems: [],
+            acquaUndevelopingItems: []
         };
 
         return new Promise((resolve) => {
@@ -112,7 +214,13 @@ class SkillsPage {
                 this._getUndevelopingItems(initialData),
                 this._getAriaBasicItems(initialData),
                 this._getAriaSubstrateItems(initialData),
-                this._getAriaUndevelopingItems(initialData)
+                this._getAriaUndevelopingItems(initialData),
+                this._getFuocoBasicItems(initialData),
+                this._getFuocoSubstrateItems(initialData),
+                this._getFuocoUndevelopingItems(initialData),
+                this._getAcquaBasicItems(initialData),
+                this._getAcquaSubstrateItems(initialData),
+                this._getAcquaUndevelopingItems(initialData)
             ]).then(resolve);
         })
             .then(() => initialData)
@@ -151,6 +259,36 @@ class SkillsPage {
                 new Accordion(
                     document.querySelector(".aria-undeveloping__accordion"),
                     initialData.ariaUndevelopingItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".fuoco-basic__accordion"),
+                    initialData.fuocoBasicItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".fuoco-substrate__accordion"),
+                    initialData.fuocoSubstrateItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".fuoco-undeveloping__accordion"),
+                    initialData.fuocoUndevelopingItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".acqua-basic__accordion"),
+                    initialData.acquaBasicItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".acqua-substrate__accordion"),
+                    initialData.acquaSubstrateItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".acqua-undeveloping__accordion"),
+                    initialData.acquaUndevelopingItems // todo entity
                 ).init();
 
                 new Tabs(
