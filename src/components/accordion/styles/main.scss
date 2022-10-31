@@ -3,15 +3,17 @@
 .accordion {
   .accordion__item {
     & + .accordion__item {
-      border-top: 1px solid $colorLightGray;
+      border-top: 1px solid $colorDarkGray;
     }
 
     &.active {
       .item__body {
+        padding-left: 12px;
+        padding-top: 8px;
         overflow: visible;
         height: auto;
         opacity: 1;
-        max-height: 1000px;
+        max-height: 1600px;
         margin-bottom: 20px;
       }
     }

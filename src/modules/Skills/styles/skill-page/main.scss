@@ -5,14 +5,25 @@
   @import "deseases/main";
 
   .skill-page__header {
-    height: 60px;
+    height: 68px;
     margin-bottom: 24px;
-    background: $colorLightGray;
+    background: $colorDarkGray;
     box-shadow: 0 4px 20px rgb(57 69 86 / 10%);
+
+    .header__title {
+      font-size: $baseFontSize * 1.5;
+      color: $colorBlack;
+    }
   }
 
   .skill-page__to-return {
-    font-size: 40px;
+    font-size: 34px;
+    color: $colorBlack;
+
+    span {
+      font-size: $baseFontSize;
+      transform: translateY(2px);
+    }
   }
 
   .skill-page__aside {
@@ -29,9 +40,46 @@
       font-size: $baseFontSize * 1.125;
       padding: 16px 12px;
       text-align: center;
+      color: $colorPurple;
+      transition: ease color .12s;
 
       &:hover {
         color: $colorRed;
+      }
+    }
+  }
+}
+
+.skill-page {
+  @media screen and (max-width: $screenSizeLarge) {
+    .skill-page__aside {
+      max-width: 200px;
+      min-width: 200px;
+
+      a {
+        font-size: $baseFontSize
+      }
+    }
+  }
+
+  @media screen and (max-width: $screenSizeMedium) {
+    .skill-page__aside {
+      display: none;
+    }
+
+    .skill-page__header {
+      .header__title {
+        margin: 0 auto;
+      }
+    }
+
+    .skill-page__to-return {
+      font-size: 26px;
+      color: $colorBlack;
+
+      span {
+        font-size: $baseFontSize;
+        transform: translateY(0);
       }
     }
   }

@@ -1,9 +1,34 @@
 .skill-category {
-  //.accordion {}
+  & + .skill-category {
+    margin-top: 32px;
+  }
+
+  .accordion__item {
+    .item__header {
+      font-size: $baseFontSize * 1.250;
+    }
+  }
 
   .skill-category__title {
     font-size: 24px;
     color: $colorRed;
     margin-bottom: 12px;
+  }
+
+  p {
+    font-size: $baseFontSize * 1.125;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    margin: 10px 0 16px 0;
+  }
+
+  li {
+    margin-left: 24px;
+
+    & + li {
+      margin-top: 6px;
+    }
   }
 }

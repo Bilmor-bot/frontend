@@ -43,7 +43,7 @@
   }
 
   .box:hover {
-    transform: translateY(-10px);
+    transform: translateY(-6px);
   }
 
   .box::before {
@@ -113,10 +113,12 @@
   .box .content a {
     display: inline-block;
     font-size: 28px;
-    padding: 10px;
+    padding: 10px 24px;
     font-weight: 700;
     color: $colorBlack;
     background: $colorWhite;
+    border-radius: 6px;
+    transition: ease all .08s;
   }
 
   .box .content a:hover {
