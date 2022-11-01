@@ -37,13 +37,20 @@ class Aside {
                     document
                         .querySelector(".skill-page__aside")
                         .classList.toggle("active");
+                    document
+                        .querySelector(".header__to-menu")
+                        .classList.toggle("active");
                 });
 
             document
                 .querySelector(".skill-page__aside")
-                .addEventListener("click", (e) => {
-                    e.target.closest(".skill-page__aside")
+                .addEventListener("click", () => {
+                    document
+                        .querySelector(".skill-page__aside")
                         .classList.remove("active");
+                    document
+                        .querySelector(".header__to-menu")
+                        .classList.toggle("active");
                 });
         }
     }
