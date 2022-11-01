@@ -227,21 +227,6 @@ class SkillsPage {
             .catch(() => initialData);
     }
 
-    // /**
-    //  * @private
-    //  * @method _initHamburger
-    //  * @returns {void}
-    //  */
-    // _initHamburger() {
-    //     let element = document.querySelector(".header__to-menu");
-    //
-    //     if (element) {
-    //         element.addEventListener("click", () => {
-    //             element.classList.toggle("active");
-    //         });
-    //     }
-    // }
-
     /**
      * @public
      * @method init
@@ -311,8 +296,6 @@ class SkillsPage {
                 ).init();
 
                 new Aside().init();
-
-                this._initHamburger();
             });
     }
 }
