@@ -1,7 +1,9 @@
+@import "reset";
+
 @import "variables/main";
 @import "mixins/main";
 
-@import "reset";
+@import "framework/main";
 
 html,
 body {

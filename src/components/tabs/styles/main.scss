@@ -12,6 +12,11 @@
 
   .tabs__items {
     display: flex;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
   }
 
   .tabs__item {

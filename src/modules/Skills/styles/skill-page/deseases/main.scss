@@ -1,4 +1,11 @@
 .deseases-abilities {
+  padding-bottom: 46px;
+
+  & > .flex-container {
+    flex-wrap: wrap;
+    gap: 24px 16px;
+  }
+
   .skills-deseases {
     border: 1px solid $colorWhite;
     width: 360px;
