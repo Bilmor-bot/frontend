@@ -1,7 +1,7 @@
-const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import path from 'path';
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-module.exports = {
+export default {
     mode: process.env.NODE_ENV || 'production',
     entry: {
         404: './src/modules/404/index.js',
@@ -12,7 +12,7 @@ module.exports = {
     output: {
         clean: true,
         filename: '[name]/index.js',
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve('build'),
     },
     module: {
         rules: [
@@ -29,8 +29,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            styles: path.resolve(__dirname, 'styles/'),
-            components: path.resolve(__dirname, 'src/components/'),
+            styles: path.resolve('styles/'),
+            components: path.resolve('src/components/'),
         },
     },
     plugins: [
