@@ -1,14 +1,14 @@
-import developing from "./developing";
-import undeveloping from "./undeveloping";
-import ariaBasic from "./aria-basic";
-import ariaSubstrate from "./aria-substrate";
-import ariaUndeveloping from "./aria-undeveloping";
-import fuocoBasic from "./fuoco-basic";
-import fuocoSubstrate from "./fuoco-substrate";
-import fuocoUndeveloping from "./fuoco-undeveloping";
-import acquaBasic from "./acqua-basic";
-import acquaSubstrate from "./acqua-substrate";
-import acquaUndeveloping from "./acqua-undeveloping";
+import developing from "./developing.js";
+import undeveloping from "./undeveloping.js";
+import ariaBasic from "./aria-basic.js";
+import ariaSubstrate from "./aria-substrate.js";
+import ariaUndeveloping from "./aria-undeveloping.js";
+import fuocoBasic from "./fuoco-basic.js";
+import fuocoSubstrate from "./fuoco-substrate.js";
+import fuocoUndeveloping from "./fuoco-undeveloping.js";
+import acquaBasic from "./acqua-basic.js";
+import acquaSubstrate from "./acqua-substrate.js";
+import acquaUndeveloping from "./acqua-undeveloping.js";
 
 class Repository {
     // constructor() {

@@ -8,6 +8,7 @@ export default {
         App: './styles/index.scss',
         HomePage: './src/modules/HomePage/index.js',
         SkillsPage: './src/modules/Skills/index.js',
+        AdminBundle: './src/modules/Admin/index.js'
     },
     output: {
         clean: true,
@@ -30,6 +31,7 @@ export default {
     resolve: {
         alias: {
             styles: path.resolve('styles/'),
+            src: path.resolve('src/'),
             components: path.resolve('src/components/'),
         },
     },

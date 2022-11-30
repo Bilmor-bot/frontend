@@ -1,3 +1,55 @@
+import AuthorizationService from "src/services/authorization";
+
+class AdminBundle {
+    constructor() {
+        this._authorizationService = AuthorizationService.getInstance();
+    }
+
+    _register() {
+        this._authorizationService.register();
+
+        return this;
+    }
+
+    _login() {
+        this._authorizationService.login();
+
+        return this;
+    }
+
+    /**
+     * @private
+     * @method _addListeners
+     * @returns {AdminBundle}
+     */
+    _addListeners() {
+        let btn = document.querySelector(".clickme");
+
+        btn.addEventListener("click", () => {
+            this._login();
+        });
+
+        return this;
+    }
+
+    init() {
+        this._addListeners();
+    }
+}
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    new AdminBundle().init();
+});
+
+
+
+
+
+
+
+
+
 // let a = {
 //     "event": "success",
 //     "info": {

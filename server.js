@@ -2,6 +2,8 @@
 
 import 'dotenv/config';
 
+import fs from "fs";
+import https from 'https';
 import path from "path";
 import express from "express";
 import nunjucks from "nunjucks";
@@ -16,6 +18,10 @@ const router = express.Router();
 const port = process.env.PORT || 8000;
 const isProduction = process.env.NODE_ENV === 'production';
 
+var privateKey  = fs.readFileSync('se/rsa.txt', 'utf8');
+var certificate = fs.readFileSync('se/bilmor-cert.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+
 app.set('view engine', 'njk');
 
 app.use((req, res, next) => {
@@ -25,13 +31,14 @@ app.use((req, res, next) => {
 
     next();
 });
-app.use(express.static(path.join('')));
+
+app.use(express.static(path.join('./')));
 // app.use(express.urlencoded({ extended: false }));
 // app.use(express.json());
 
 app.use(controller(router));
 
-nunjucks.configure(path.join('/'), {
+nunjucks.configure(path.join('./'), {
     watch: true,
     noCache: true,
     autoescape: true,
@@ -40,6 +47,10 @@ nunjucks.configure(path.join('/'), {
 
 app.get("/", (req, res) => {
     res.render("pages/Skills/index.njk");
+});
+
+app.get("/auth", (req, res) => {
+    res.render("callback-cross-auth.html");
 });
 
 app.get("/skills", (req, res) => {
@@ -56,10 +67,6 @@ app.get("/skills/general", (req, res) => {
 
 app.get("/skills/deseases", (req, res) => {
     res.render("pages/Skills/Deseases/index.njk");
-});
-
-app.get("/admin", (req, res) => {
-    res.render("pages/Admin/index.njk");
 });
 
 app.get("*", (req, res) => {
@@ -84,3 +91,8 @@ app.listen(port, () => {
 
     console.log("we are on " + port);
 });
+
+
+var httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(8443);
