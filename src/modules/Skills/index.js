@@ -190,6 +190,86 @@ class SkillsPage {
 
     /**
      * @private
+     * @method _getElementalMagicItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getElementalMagicItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getElementalMagicItems((items) => {
+                resultContainer.elementalMagicItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getCombatMagicItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getCombatMagicItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getCombatMagicItems((items) => {
+                resultContainer.combatMagicItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getMentalMagicItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getMentalMagicItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getMentalMagicItems((items) => {
+                resultContainer.mentalMagicItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getOneiromancyItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getOneiromancyItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getOneiromancyItems((items) => {
+                resultContainer.oneiromancyItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
+     * @method _getOneiromancyItems
+     * @param resultContainer {Object}
+     * @returns {Promise}
+     */
+    _getAnimagiaItems(resultContainer) {
+        return new Promise((resolve) => {
+            this.Repository.getAnimagiaItems((items) => {
+                resultContainer.animagiaItems = items;
+            });
+
+            resolve();
+        });
+    }
+
+    /**
+     * @private
      * @method _getInitialData
      * @returns {Promise}
      */
@@ -205,7 +285,12 @@ class SkillsPage {
             fuocoUndevelopingItems: [],
             acquaBasicItems: [],
             acquaSubstrateItems: [],
-            acquaUndevelopingItems: []
+            acquaUndevelopingItems: [],
+            elementalMagicItems: [],
+            combatMagicItems: [],
+            mentalMagicItems: [],
+            oneiromancyItems: [],
+            animagiaItems: []
         };
 
         return new Promise((resolve) => {
@@ -220,7 +305,12 @@ class SkillsPage {
                 this._getFuocoUndevelopingItems(initialData),
                 this._getAcquaBasicItems(initialData),
                 this._getAcquaSubstrateItems(initialData),
-                this._getAcquaUndevelopingItems(initialData)
+                this._getAcquaUndevelopingItems(initialData),
+                this._getElementalMagicItems(initialData),
+                this._getCombatMagicItems(initialData),
+                this._getMentalMagicItems(initialData),
+                this._getOneiromancyItems(initialData),
+                this._getAnimagiaItems(initialData)
             ]).then(resolve);
         })
             .then(() => initialData)
@@ -289,6 +379,31 @@ class SkillsPage {
                 new Accordion(
                     document.querySelector(".acqua-undeveloping__accordion"),
                     initialData.acquaUndevelopingItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".subject__accordion"),
+                    initialData.elementalMagicItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".combat__accordion"),
+                    initialData.combatMagicItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".mental__accordion"),
+                    initialData.mentalMagicItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".oneiromancy__accordion"),
+                    initialData.oneiromancyItems // todo entity
+                ).init();
+
+                new Accordion(
+                    document.querySelector(".animagia__accordion"),
+                    initialData.animagiaItems // todo entity
                 ).init();
 
                 new Tabs(

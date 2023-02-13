@@ -49,6 +49,10 @@ app.get("/skills/deseases", (req, res) => {
     res.render("pages/Skills/Deseases/index.njk");
 });
 
+app.get("/skills/subject", (req, res) => {
+    res.render("pages/Skills/Subject/index.njk");
+});
+
 app.get("/admin", (req, res) => {
     res.render("pages/Admin/index.njk");
 });
