@@ -1,0 +1,37 @@
+<!-- callback-cross-auth -->
+<head>
+    <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
+    <script type="text/javascript">
+        var data = {{ data | dump | safe }};
+
+        var auth0Client = new auth0.WebAuth({
+            clientID: data.clientId,
+            domain: data.domain,
+            scope: 'openid read:current_user update:current_user update:current_user_metadata',
+            responseType: "token"
+        });
+
+        auth0Client.parseHash({ hash: window.location.hash }, function(err, authResult) {
+            if (err) {
+                return console.log(err);
+            }
+
+            localStorage.setItem("token", authResult.accessToken);
+
+            // The contents of authResult depend on which authentication parameters were used.
+            // It can include the following:
+            // authResult.accessToken - access token for the API specified by `audience`
+            // authResult.expiresIn - string with the access token's expiration time in seconds
+            // authResult.idToken - ID token JWT containing user profile information
+            auth0Client.client.userInfo(authResult.accessToken, function(err, user) {
+                // Now you have the user's information
+                localStorage.setItem("user", JSON.stringify({
+                    id: user.sub
+                }));
+
+                window.location.href = localStorage.getItem("loginFromUrl");
+                localStorage.removeItem("loginFromUrl");
+            });
+        });
+    </script>
+</head>

@@ -49,10 +49,6 @@ app.get("/", (req, res) => {
     res.render("pages/Skills/index.njk");
 });
 
-app.get("/auth", (req, res) => {
-    res.render("callback-cross-auth.html");
-});
-
 app.get("/skills", (req, res) => {
     res.render("pages/Skills/index.njk");
 });

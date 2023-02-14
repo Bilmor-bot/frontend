@@ -8,6 +8,7 @@ export default {
         App: './styles/index.scss',
         HomePage: './src/modules/HomePage/index.js',
         SkillsPage: './src/modules/Skills/index.js',
+        ProfilePage: './src/modules/Profile/index.js',
         AdminBundle: './src/modules/Admin/index.js'
     },
     output: {
