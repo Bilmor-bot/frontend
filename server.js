@@ -93,8 +93,8 @@ app.listen(port, () => {
 });
 
 
-var privateKey  = fs.readFileSync('se/rsa.txt', 'utf8');
-var certificate = fs.readFileSync('se/bilmor-cert.crt', 'utf8');
-var credentials = {key: privateKey, cert: certificate};
-var httpsServer = https.createServer(credentials, app);
-httpsServer.listen(8443);
+// var privateKey  = fs.readFileSync('se/rsa.txt', 'utf8');
+// var certificate = fs.readFileSync('se/bilmor-cert.crt', 'utf8');
+// var credentials = {key: privateKey, cert: certificate};
+// var httpsServer = https.createServer(credentials, app);
+// httpsServer.listen(8443);
