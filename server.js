@@ -1,11 +1,20 @@
 "use strict";
 
-require("dotenv").config();
+import 'dotenv/config';
 
-const path = require("path");
-const express = require("express");
-const nunjucks = require("nunjucks");
+import fs from "fs";
+import https from 'https';
+import path from "path";
+import express from "express";
+import nunjucks from "nunjucks";
+import webpack from "webpack";
+import webpackDevMiddleware from "webpack-dev-middleware";
+
+import defaultWebpackConfig from "./webpack.config.js";
+import controller from './api/controller/index.js';
+
 const app = express();
+const router = express.Router();
 const port = process.env.PORT || 8000;
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -18,11 +27,14 @@ app.use((req, res, next) => {
 
     next();
 });
-app.use(express.static(path.join(__dirname + '')));
+
+app.use(express.static(path.join('./')));
 // app.use(express.urlencoded({ extended: false }));
 // app.use(express.json());
 
-nunjucks.configure(path.join(__dirname + '/'), {
+app.use(controller(router));
+
+nunjucks.configure(path.join('./'), {
     watch: true,
     noCache: true,
     autoescape: true,
@@ -64,13 +76,10 @@ app.get("*", (req, res) => {
 
 app.listen(port, () => {
     if (!isProduction) {
-        const defaultWebpackConfig = require("./webpack.config");
         const overrideWebpackConfig = {
             mode: "development"
         };
         const webpackConfig = Object.assign(defaultWebpackConfig, overrideWebpackConfig);
-        const webpack = require("webpack");
-        const webpackDevMiddleware = require("webpack-dev-middleware");
         const compiler = webpack(webpackConfig);
 
         app.use(
@@ -82,3 +91,10 @@ app.listen(port, () => {
 
     console.log("we are on " + port);
 });
+
+
+var privateKey  = fs.readFileSync('se/rsa.txt', 'utf8');
+var certificate = fs.readFileSync('se/bilmor-cert.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+var httpsServer = https.createServer(credentials, app);
+httpsServer.listen(8443);
