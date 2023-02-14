@@ -9,6 +9,12 @@ import fuocoUndeveloping from "./fuoco-undeveloping.js";
 import acquaBasic from "./acqua-basic.js";
 import acquaSubstrate from "./acqua-substrate.js";
 import acquaUndeveloping from "./acqua-undeveloping.js";
+import elementalMagic from "./elemental-magic.js";
+import combatMagic from "./combat-magic.js";
+import mentalMagic from "./mental-magic.js";
+import oneiromancy from "./oneiromancy.js";
+import animagia from "./animagia.js";
+
 
 class Repository {
     // constructor() {
@@ -123,6 +129,56 @@ class Repository {
      */
     getAcquaUndevelopingItems(success) {
         return success(acquaUndeveloping);
+    }
+
+    /**
+     * @public
+     * @method getElementalMagicItems
+     * @param success {Function}
+     * @returns {Array}
+     */
+    getElementalMagicItems(success) {
+        return success(elementalMagic);
+    }
+
+    /**
+     * @public
+     * @method getCombatMagicItems
+     * @param success {Function}
+     * @returns {Array}
+     */
+    getCombatMagicItems(success) {
+        return success(combatMagic);
+    }
+
+    /**
+     * @public
+     * @method getMentalMagicItems
+     * @param success {Function}
+     * @returns {Array}
+     */
+    getMentalMagicItems(success) {
+        return success(mentalMagic);
+    }
+
+    /**
+     * @public
+     * @method getOneiromancyItems
+     * @param success {Function}
+     * @returns {Array}
+     */
+    getOneiromancyItems(success) {
+        return success(oneiromancy);
+    }
+
+    /**
+     * @public
+     * @method getAnimagiaItems
+     * @param success {Function}
+     * @returns {Array}
+     */
+    getAnimagiaItems(success) {
+        return success(animagia);
     }
 }
 
