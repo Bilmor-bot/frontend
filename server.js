@@ -2,8 +2,6 @@
 
 import 'dotenv/config';
 
-import fs from "fs";
-import https from 'https';
 import path from "path";
 import express from "express";
 import nunjucks from "nunjucks";
@@ -15,10 +13,14 @@ import controller from './api/controller/index.js';
 
 const app = express();
 const router = express.Router();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8080;
 const isProduction = process.env.NODE_ENV === 'production';
 
 app.set('view engine', 'njk');
+
+app.use(express.static(path.join('./')));
+
+app.use("/api/admin", controller(router));
 
 app.use((req, res, next) => {
     res.locals.buildImageUrl = function (path) {
@@ -27,12 +29,6 @@ app.use((req, res, next) => {
 
     next();
 });
-
-app.use(express.static(path.join('./')));
-// app.use(express.urlencoded({ extended: false }));
-// app.use(express.json());
-
-app.use(controller(router));
 
 nunjucks.configure(path.join('./'), {
     watch: true,
@@ -93,8 +89,10 @@ app.listen(port, () => {
 });
 
 
-// var privateKey  = fs.readFileSync('se/rsa.txt', 'utf8');
-// var certificate = fs.readFileSync('se/bilmor-cert.crt', 'utf8');
+// import fs from "fs";
+// import https from 'https';
+// var privateKey  = fs.readFileSync('sert/rsa.txt', 'utf8');
+// var certificate = fs.readFileSync('sert/bilmor-cert.crt', 'utf8');
 // var credentials = {key: privateKey, cert: certificate};
 // var httpsServer = https.createServer(credentials, app);
-// httpsServer.listen(8443);
+// httpsServer.listen(443);

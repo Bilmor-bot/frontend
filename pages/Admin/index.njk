@@ -5,7 +5,6 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script async defer src="https://unpkg.com/@vkontakte/superappkit@1.57.0/dist/index-umd.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -44,8 +43,8 @@
 {#  });#}
 {#</script>#}
 
-
-<script async defer>
+<script async defer src="https://unpkg.com/@vkontakte/superappkit@1.57.0/dist/index-umd.js"></script>
+<script async defer type="module">
     // import { Config, Connect, ConnectEvents } from '@vkontakte/superappkit';
     const { Config, Connect, ConnectEvents } = window.SuperAppKit;
 
@@ -94,10 +93,16 @@
 
     // Получить iframe можно с помощью метода getFrame()
     document.body.appendChild(oneTapButton.getFrame());
+    //
+    // // Удалить iframe можно с помощью OneTapButton.destroy();
 
-    // Удалить iframe можно с помощью OneTapButton.destroy();
+    // const { Connect, Config } = window.SuperAppKit;
+    //
+    // Config.init({
+    //     appId: 51552130, // идентификатор приложения
+    // });
 </script>
 
-<script src="build/AdminBundle/index.js"></script>
+{#<script defer src="build/AdminBundle/index.js"></script>#}
 </body>
 </html>

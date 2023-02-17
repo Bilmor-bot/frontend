@@ -1,32 +1,49 @@
 // import auth0 from "auth0-js";
+import Model from "../model/Users.js";
 
 export default function (router) {
-    /**
-     * @Route ("/admin", method="GET")
-     * @returns Response
-     */
-    router.get("/admin", (req, res) => {
-        res.render("pages/Admin/index.njk");
-    });
+    const model = new Model();
 
     /**
-     * @Route ("/profile", method="GET")
+     * admin validation by token or whatever
+     */
+    router.use((req, res, next) => {
+        console.log(req.get("Cache-Control"));
+
+        next();
+    });
+
+    /**
+     * @Route ("/api/admin/users", method="GET")
      * @returns Response
      */
-    router.get("/profile", (req, res) => {
-        res.render("pages/Profile/index.njk");
+    router.get("/users", async (req, res) => {
+        let response = await model.getUsers();
+
+        res.send(response);
     });
 
-    router.get("/auth", (req, res) => {
-        res.render("pages/Auth/index.njk", {data: {
-            domain: process.env.USER_POOL_DOMAIN,
-            clientId: process.env.USER_POOL_CLIENT_ID
-        }});
-    });
+    // /**
+    //  * @Route ("/api/profile", method="GET")
+    //  * @returns Response
+    //  */
+    // router.get("/api/profile", (req, res) => {
+    //     res.send({
+    //         id: 1,
+    //         name: "Alice"
+    //     });
+    // });
 
-    router.get("/logout", (req, res) => {
-        res.redirect(req.query.redirectTo);
-    });
+    // router.get("/auth", (req, res) => {
+    //     res.render("pages/Auth/index.njk", {data: {
+    //         domain: process.env.USER_POOL_DOMAIN,
+    //         clientId: process.env.USER_POOL_CLIENT_ID
+    //     }});
+    // });
+
+    // router.get("/logout", (req, res) => {
+    //     res.redirect(req.query.redirectTo);
+    // });
 
     return router;
 }
