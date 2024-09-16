@@ -1,19 +1,19 @@
-import developing from "./developing";
-import undeveloping from "./undeveloping";
-import ariaBasic from "./aria-basic";
-import ariaSubstrate from "./aria-substrate";
-import ariaUndeveloping from "./aria-undeveloping";
-import fuocoBasic from "./fuoco-basic";
-import fuocoSubstrate from "./fuoco-substrate";
-import fuocoUndeveloping from "./fuoco-undeveloping";
-import acquaBasic from "./acqua-basic";
-import acquaSubstrate from "./acqua-substrate";
-import acquaUndeveloping from "./acqua-undeveloping";
-import elementalMagic from "./elemental-magic";
-import combatMagic from "./combat-magic";
-import mentalMagic from "./mental-magic";
-import oneiromancy from "./oneiromancy";
-import animagia from "./animagia";
+import developing from "./developing.js";
+import undeveloping from "./undeveloping.js";
+import ariaBasic from "./aria-basic.js";
+import ariaSubstrate from "./aria-substrate.js";
+import ariaUndeveloping from "./aria-undeveloping.js";
+import fuocoBasic from "./fuoco-basic.js";
+import fuocoSubstrate from "./fuoco-substrate.js";
+import fuocoUndeveloping from "./fuoco-undeveloping.js";
+import acquaBasic from "./acqua-basic.js";
+import acquaSubstrate from "./acqua-substrate.js";
+import acquaUndeveloping from "./acqua-undeveloping.js";
+import elementalMagic from "./elemental-magic.js";
+import combatMagic from "./combat-magic.js";
+import mentalMagic from "./mental-magic.js";
+import oneiromancy from "./oneiromancy.js";
+import animagia from "./animagia.js";
 
 
 class Repository {

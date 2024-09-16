@@ -8,11 +8,12 @@
     <title>Document</title>
 </head>
 <body>
+
+{#{% include "src/components/authorization/main.njk" %}#}
+
 {#<button id="upload_widget" class="cloudinary-button">Upload files</button>#}
 {#<img src="{{ buildImageUrl('letsgo.jpg') }}" alt="">#}
-<p>
-  lorem jfdskjgh jkfhgj kdhfgjk hdfj ghdjkhf jhjkh  jkdfhgkj dhfkg hdjf gdf gdfg dffgfgfg
-</p>
+
 {#<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>#}
 
 {#<script type="text/javascript">#}
@@ -30,16 +31,78 @@
 {#        myWidget.open();#}
 {#    }, false);#}
 {#</script>#}
-<script>
-  document.body.addEventListener("copy", function(event) {
-    event.preventDefault();
-  });
+{#<script>#}
+{#  document.body.addEventListener("copy", function(event) {#}
+{#    event.preventDefault();#}
+{#  });#}
 
-  document.body.addEventListener("keydown", function(event) {
-    if (event.key === "c" && event.ctrlKey) {
-      event.preventDefault();
-    }
-  });
+{#  document.body.addEventListener("keydown", function(event) {#}
+{#    if (event.key === "c" && event.ctrlKey) {#}
+{#      event.preventDefault();#}
+{#    }#}
+{#  });#}
+{#</script>#}
+
+<script async defer src="https://unpkg.com/@vkontakte/superappkit@1.57.0/dist/index-umd.js"></script>
+<script async defer type="module">
+    // import { Config, Connect, ConnectEvents } from '@vkontakte/superappkit';
+    const { Config, Connect, ConnectEvents } = window.SuperAppKit;
+
+    Config.init({
+        appId: 51552130, // Идентификатор приложения
+    });
+
+    const oneTapButton = Connect.buttonOneTapAuth({
+        // Обязательный параметр в который нужно добавить обработчик событий приходящих из SDK
+        callback: function(e) {
+            const type = e.type;
+
+            if (!type) {
+                return false;
+            }
+
+            switch (type) {
+                case ConnectEvents.OneTapAuthEventsSDK.LOGIN_SUCCESS: // = 'VKSDKOneTapAuthLoginSuccess'
+                    console.log(e);
+                    return false
+                // Для этих событий нужно открыть полноценный VK ID чтобы
+                // пользователь дорегистрировался или подтвердил телефон
+                case ConnectEvents.OneTapAuthEventsSDK.FULL_AUTH_NEEDED: //  = 'VKSDKOneTapAuthFullAuthNeeded'
+                case ConnectEvents.OneTapAuthEventsSDK.PHONE_VALIDATION_NEEDED: // = 'VKSDKOneTapAuthPhoneValidationNeeded'
+                case ConnectEvents.ButtonOneTapAuthEventsSDK.SHOW_LOGIN: // = 'VKSDKButtonOneTapAuthShowLogin'
+                    return Connect.redirectAuth({ url: 'http://localhost:8080', state: 'dj29fnsadjsd82'}); // url - строка с url, на который будет произведён редирект после авторизации.
+                // state - состояние вашего приложение или любая произвольная строка, которая будет добавлена к url после авторизации.
+                // Пользователь перешел по кнопке "Войти другим способом"
+                case ConnectEvents.ButtonOneTapAuthEventsSDK.SHOW_LOGIN_OPTIONS: // = 'VKSDKButtonOneTapAuthShowLoginOptions'
+                    // Параметр screen: phone позволяет сразу открыть окно ввода телефона в VK ID
+                    // Параметр url: ссылка для перехода после авторизации. Должен иметь https схему. Обязательный параметр.
+                    return Connect.redirectAuth({ screen: 'phone', url: 'http://localhost:8080' });
+            }
+
+            return false;
+        },
+        // Не обязательный параметр с настройками отображения OneTap
+        options: {
+            showAlternativeLogin: false, // Отображение кнопки "Войти другим способом"
+            displayMode: 'default', // Режим отображения кнопки 'default' | 'name_phone' | 'phone_name'
+            buttonStyles: {
+                borderRadius: 8, // Радиус скругления кнопок
+            }
+        },
+    });
+
+    // Получить iframe можно с помощью метода getFrame()
+    document.body.appendChild(oneTapButton.getFrame());
+    //
+    // // Удалить iframe можно с помощью OneTapButton.destroy();
+
+    // const { Connect, Config } = window.SuperAppKit;
+    //
+    // Config.init({
+    //     appId: 51552130, // идентификатор приложения
+    // });
 </script>
+
+{#<script defer src="build/AdminBundle/index.js"></script>#}
 </body>
 </html>

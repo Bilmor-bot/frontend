@@ -1,3 +1,89 @@
+import Authorization from "components/authorization/main";
+
+class AdminBundle {
+    constructor() {
+
+    }
+
+    // _register() {
+    //     this._authorizationService.register({
+    //         email: "",
+    //         password: ""
+    //     }, (u) => {
+    //         console.log(u)
+    //     }, (e) => {
+    //         console.log(e)
+    //     });
+    //
+    //     return this;
+    // }
+    //
+    // _login() {
+    //     this._authorizationService.login({
+    //         email: "warhauslive@gmail.com",
+    //         password: "753119Ar"
+    //     }, (u) => {
+    //         console.log(u)
+    //     }, (e) => {
+    //         console.log(e)
+    //     });
+    //
+    //     return this;
+    // }
+    //
+    // _logout() {
+    //     this._authorizationService.logout();
+    //
+    //     return this;
+    // }
+    //
+    // _getUser() {
+    //     this._authorizationService.getUser((user) => {
+    //         console.log(user)
+    //     }, (error) => {
+    //         console.log(error);
+    //     });
+    //
+    //     return this;
+    // }
+    //
+    // /**
+    //  * @private
+    //  * @method _addListeners
+    //  * @returns {AdminBundle}
+    //  */
+    // _addListeners() {
+    //     let btn = document.querySelector(".clickme");
+    //
+    //     btn.addEventListener("click", () => {
+    //         // this._login();
+    //         // this._logout();
+    //         // this._getUser();
+    //     });
+    //
+    //     return this;
+    // }
+
+    init() {
+        new Authorization(
+            document.querySelector(".authorization"),
+        ).init();
+    }
+}
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    // new AdminBundle().init();
+});
+
+
+
+
+
+
+
+
+
 // let a = {
 //     "event": "success",
 //     "info": {

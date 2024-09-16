@@ -1,9 +1,9 @@
-import Repository from "./repository/Repository";
+import Repository from "./repository/Repository.js";
 
 import Accordion from "components/accordion/main";
 import Tabs from "components/tabs/main";
 
-import Aside from "./aside";
+import Aside from "./aside.js";
 
 import "./styles/index.scss";
 
