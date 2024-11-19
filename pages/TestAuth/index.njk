@@ -1,0 +1,147 @@
+{% extends 'pages/base.njk' %}
+
+{% block stylesheets %}
+    {{ super() }}
+
+    <style>
+        p {
+            margin: 0;
+        }
+
+        p + p {
+            margin-top: 8px;
+        }
+
+        .app {
+            width: 600px;
+            margin: 40px auto;
+        }
+
+        .authorization {
+            display: none;
+        }
+
+        .model {
+            display: none;
+            border: 1px solid yellow;
+            border-radius: 4px;
+            width: fit-content;
+            flex-wrap: wrap;
+        }
+
+        .model .model__avatar {
+            margin-top: 16px;
+            margin-left: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .model__info {
+            padding-left: 16px;
+            padding-right: 16px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .model button {
+            width: 100%;
+            margin-top: 16px;
+            padding: 8px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="app">
+        <div class="authorization"></div>
+
+        <div class="model">
+            <div class="model__avatar">
+                <img src="" alt="">
+            </div>
+
+            <div class="model__info">
+                <p class="model__name"></p>
+                <p class="model__surname"></p>
+            </div>
+
+            <button type="button">
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@vkid/sdk@<3.0.0/dist-sdk/umd/index.js"></script>
+    <script type="text/javascript">
+        if ('VKIDSDK' in window) {
+            const VKID = window.VKIDSDK;
+
+            VKID.Config.init({
+                app: 51552085,
+                redirectUrl: 'https://bilmor.online/test-auth',
+                responseMode: VKID.ConfigResponseMode.Callback,
+                source: VKID.ConfigSource.LOWCODE,
+            });
+
+            const oneTap = new VKID.OneTap();
+
+            oneTap.render({
+                container: document.querySelector(".app .authorization"),
+                scheme: 'dark',
+                showAlternativeLogin: true,
+                scope: "first_name, last_name, avatar"
+            })
+                .on(VKID.WidgetEvents.ERROR, vkidOnError)
+                .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (payload) {
+                    const code = payload.code;
+                    const deviceId = payload.device_id;
+
+                    VKID.Auth.exchangeCode(code, deviceId)
+                        .then(vkidOnSuccess)
+                        .catch(vkidOnError);
+                });
+
+            function vkidOnSuccess(data) {
+                // Обработка полученного результата
+                localStorage.setItem('token', data.access_token);
+                window.location.reload();
+            }
+
+            function vkidOnError(error) {
+                // Обработка ошибки
+                console.log(error, 'error')
+            }
+        }
+    </script>
+
+    <script>
+        const token = localStorage.getItem('token');
+        const avatar = document.querySelector('.app .model__avatar img');
+        const firstName = document.querySelector('.app .model__name');
+        const lastName = document.querySelector('.app .model__surname');
+        const button = document.querySelector('.app .model button');
+
+        window.VKIDSDK.Auth
+            .userInfo(token)
+            .then((data) => {
+                document.querySelector('.app .authorization').style.display = 'none';
+                document.querySelector('.app .model').style.display = 'flex';
+
+                avatar.setAttribute('src', data.user.avatar);
+                firstName.textContent = data.user.first_name;
+                lastName.textContent = data.user.last_name;
+
+                button.addEventListener('click', () => {
+                   localStorage.removeItem('token');
+                   window.location.reload();
+                });
+            })
+            .catch((error) => {
+                document.querySelector('.app .authorization').style.display = 'block';
+                document.querySelector('.app .model').style.display = 'none';
+            })
+    </script>
+{% endblock %}
