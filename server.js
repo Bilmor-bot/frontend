@@ -57,6 +57,10 @@ app.get("/admin", (req, res) => {
     res.render("pages/Admin/index.njk");
 });
 
+app.get("/test-auth", (req, res) => {
+    res.render("pages/TestAuth/index.njk");
+});
+
 app.get("*", (req, res) => {
     // res.status(404).redirect("/magic");
     res.status(404).render("pages/404/index.njk");
